@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   const supabase = await createSupabaseServerClient();
   const { data, error } = await supabase.auth.verifyOtp({
     token_hash: link.properties.hashed_token,
-    type: "magiclink",
+    type: link.properties.verification_type as "magiclink" | "signup",
   });
   if (error || !data.user) {
     return new NextResponse(error?.message ?? "Sign-in failed", { status: 500 });
