@@ -17,6 +17,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm typecheck
+      - run: pnpm --filter @proofwork/web build
 
   migrate:
     needs: checks
