@@ -10,7 +10,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "pnpm -r --if-present typecheck"
+    "typecheck": "pnpm -r --if-present typecheck",
+    "db:generate": "pnpm --filter @proofwork/db generate",
+    "db:migrate:dev": "pnpm --filter @proofwork/db migrate dev"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
