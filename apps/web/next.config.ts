@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@proofwork/shared"],
+  transpilePackages: ["@proofwork/shared", "@proofwork/db"],
 };
 
 export default nextConfig;
