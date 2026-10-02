@@ -1,0 +1,21 @@
+{
+  "provider": "e2b",
+  "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+  "templateAlreadyExisted": true,
+  "sandboxId": "il6rk9a0278ujk5p4736b",
+  "installExit": 0,
+  "testExit": 1,
+  "testFirstOutputMs": 1223,
+  "testSummary": ["1 failed", "2 passed (20.4s)"],
+  "egressOpenByDefault": true,
+  "egressBlockedWhenDisabled": true,
+  "lockedProbeOutput": "blocked",
+  "timingsMs": {
+    "create": 827,
+    "upload": 1095,
+    "npmInstall": 4215,
+    "playwrightRun": 21600,
+    "egressProbe": 1195,
+    "destroy": 507
+  }
+}

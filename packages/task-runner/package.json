@@ -1,0 +1,19 @@
+{
+  "name": "@proofwork/task-runner",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "spike:e2b": "tsx spike/e2b.ts",
+    "spike:daytona": "tsx spike/daytona.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@daytona/sdk": "^0.220.0",
+    "e2b": "^2.52.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4.23.15"
+  }
+}

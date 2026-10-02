@@ -1,0 +1,23 @@
+{
+  "provider": "daytona",
+  "image": "mcr.microsoft.com/playwright:v1.63.0-noble",
+  "sandboxId": "fb9a100b-7520-4325-b74d-d50a8d298499",
+  "installExit": 0,
+  "testExit": 1,
+  "testFirstOutputMs": 1648,
+  "testSummary": ["1 failed", "2 passed (6.2s)"],
+  "egressOpenByDefault": false,
+  "egressBlockedWhenDisabled": true,
+  "lockedProbeOutput": "000blocked",
+  "timingsMs": {
+    "createFirst_includesImageBuild": 11069,
+    "destroyFirst": 270,
+    "create": 1312,
+    "upload": 1705,
+    "npmInstall": 3765,
+    "playwrightRun": 9211,
+    "egressProbe": 2653,
+    "destroy": 1123,
+    "createLocked": 916
+  }
+}
