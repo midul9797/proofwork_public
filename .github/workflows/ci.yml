@@ -40,3 +40,21 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @proofwork/db migrate dev
       - run: pnpm --filter @proofwork/db migrate prod
+
+  sync-tasks:
+    needs: migrate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_PROD_SESSION_POOLER: ${{ secrets.SUPABASE_PROD_SESSION_POOLER }}
+      SUPABASE_PROD_URL: ${{ secrets.SUPABASE_PROD_URL }}
+      SUPABASE_PROD_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_PROD_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm tasks:sync prod
