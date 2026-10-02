@@ -1,0 +1,38 @@
+slug: checkout-regression
+version: 1
+title: Checkout regression
+summary: A discount-code change broke the checkout. Find what regressed, fix it, and cover it with tests.
+measures:
+  - Debugging an unfamiliar codebase
+  - Writing tests that protect behaviour
+  - Handling an unclear requirement
+  - Checking AI output before trusting it
+durationMinutes: 60
+
+run:
+  workdir: repo
+  setupCommand: npm ci
+  startCommand: npm run start:test-server
+  testCommand: npx playwright test
+  env:
+    PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+  testTimeoutSeconds: 120
+
+files:
+  visible:
+    - src/**
+    - tests/**
+    - package.json
+    - playwright.config.ts
+  readOnly:
+    - package.json
+    - playwright.config.ts
+
+rubric:
+  diagnosis: 25
+  fix_quality: 25
+  test_quality: 20
+  ai_verification: 20
+  communication: 10
+
+traps: []
