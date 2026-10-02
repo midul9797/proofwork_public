@@ -83,3 +83,22 @@ Notes for whoever extends it:
 - Each command runs in its own `bash -c`, so an `exit` or `cd` in one run never affects the next.
 - `pnpm test` runs the real-sandbox tests when `DAYTONA_API_KEY` is set and skips them otherwise.
 - `pnpm --filter @proofwork/task-runner spike:playwright` runs the fixture Playwright suite through the runner; `spike:cleanup` deletes any sandboxes left behind.
+
+## Tasks and `pnpm tasks:sync`
+
+Each task is a folder in `tasks/` (`task.yaml`, `brief.md`, `repo/`, `hidden/`, `traps/`); the format is documented in `packages/shared/src/task.ts`.
+
+```bash
+pnpm tasks:sync dev --dry-run   # show what would change
+pnpm tasks:sync dev             # validate, upload and record new versions
+```
+
+- Only `repo/` is uploaded (to the private `task-files` bucket). `hidden/` and `traps/` never leave the repository.
+- A task whose content is unchanged is skipped. Any change, even to a hidden file, creates a new version (`checkout-regression/v2/...`). Old versions are kept because running sessions point at them.
+- Text files are hashed with LF line endings, so Windows and Linux agree.
+- It reads `SUPABASE_DEV_SESSION_POOLER`, `SUPABASE_DEV_URL` and `SUPABASE_DEV_SERVICE_ROLE_KEY` (and the `PROD` equivalents) from `.env` or the environment. The service-role key can bypass all security: never commit it, and never put it in a `NEXT_PUBLIC_` variable.
+- `pnpm --filter @proofwork/task-runner verify-task <slug>` checks in a real sandbox that a task's visible tests pass, its hidden tests catch the planted bug, and the reference solution passes.
+
+## Database security
+
+Row-level security is on for every table and there are no policies, so the publishable key can read nothing through Supabase's REST API. The app talks to Postgres directly from the server. Any new table must call `.enableRLS()` in `packages/db/src/schema.ts`.

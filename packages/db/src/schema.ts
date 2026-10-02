@@ -47,6 +47,8 @@ export const tasks = pgTable(
     version: integer("version").notNull(),
     title: text("title").notNull(),
     summary: text("summary").notNull(),
+    /** The brief the candidate reads, copied from brief.md. */
+    briefMd: text("brief_md").notNull(),
     measures: jsonb("measures").$type<string[]>().notNull(),
     durationMinutes: integer("duration_minutes").notNull(),
     /** The parsed task.yaml. */

@@ -15,6 +15,13 @@
       "when": 1790979963390,
       "tag": "0001_vengeful_valeria_richards",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790980171459,
+      "tag": "0002_square_forge",
+      "breakpoints": true
     }
   ]
 }
