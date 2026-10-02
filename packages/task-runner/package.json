@@ -9,11 +9,13 @@
     "spike:daytona": "tsx spike/daytona.ts",
     "spike:playwright": "tsx spike/playwright-via-runner.ts",
     "spike:cleanup": "tsx spike/cleanup.ts",
+    "verify-task": "tsx scripts/verify-task.ts",
     "test": "tsx --test src/*.test.ts",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@daytona/sdk": "^0.220.0",
+    "@proofwork/shared": "workspace:^",
     "e2b": "^2.52.0"
   },
   "devDependencies": {

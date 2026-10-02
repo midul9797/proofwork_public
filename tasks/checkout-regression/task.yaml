@@ -12,7 +12,6 @@ durationMinutes: 60
 run:
   workdir: repo
   setupCommand: npm ci
-  startCommand: npm run start:test-server
   testCommand: npx playwright test
   env:
     PLAYWRIGHT_BROWSERS_PATH: /ms-playwright

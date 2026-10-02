@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Northwind Outfitters</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header><h1>Northwind Outfitters</h1></header>
+    <main>
+      <section aria-labelledby="shop-title">
+        <h2 id="shop-title">Shop</h2>
+        <ul id="products" class="products"></ul>
+      </section>
+      <section aria-labelledby="cart-title">
+        <h2 id="cart-title">Your cart</h2>
+        <p id="empty" data-testid="empty-cart">Your cart is empty.</p>
+        <table id="cart-table" hidden>
+          <tbody id="cart-rows"></tbody>
+        </table>
+        <form id="code-form" class="code-form">
+          <label for="code-input">Discount code</label>
+          <input id="code-input" data-testid="code-input" autocomplete="off" />
+          <button type="submit" data-testid="apply-code">Apply</button>
+          <button type="button" id="remove-code" data-testid="remove-code" hidden>Remove</button>
+        </form>
+        <p id="code-message" data-testid="code-message" role="status"></p>
+        <dl class="totals">
+          <dt>Subtotal</dt>
+          <dd data-testid="subtotal">$0.00</dd>
+          <dt>Discount</dt>
+          <dd data-testid="discount">-$0.00</dd>
+          <dt>Shipping</dt>
+          <dd data-testid="shipping">$0.00</dd>
+          <dt>Tax</dt>
+          <dd data-testid="tax">$0.00</dd>
+          <dt>Total</dt>
+          <dd data-testid="total">$0.00</dd>
+        </dl>
+      </section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

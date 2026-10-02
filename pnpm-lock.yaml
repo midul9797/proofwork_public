@@ -125,6 +125,9 @@ importers:
       '@daytona/sdk':
         specifier: ^0.220.0
         version: 0.220.0
+      '@proofwork/shared':
+        specifier: workspace:^
+        version: link:../shared
       e2b:
         specifier: ^2.52.0
         version: 2.52.0

@@ -1,0 +1,13 @@
+{
+  "name": "northwind-shop",
+  "version": "1.4.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}
