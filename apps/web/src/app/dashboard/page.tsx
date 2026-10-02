@@ -1,5 +1,7 @@
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { listLatestTasks } from "@/lib/tasks";
 import { ensureUserWorkspace } from "@/lib/workspace";
+import { InviteForm } from "./invite-form";
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
@@ -9,9 +11,10 @@ export default async function DashboardPage() {
   // The proxy already redirects signed-out visitors; this guards the type.
   if (!authUser) return null;
   const { user, workspace } = await ensureUserWorkspace(authUser);
+  const tasks = await listLatestTasks();
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-10">
+    <main className="mx-auto max-w-3xl px-6 py-10">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold">{workspace.name}</h1>
@@ -25,7 +28,19 @@ export default async function DashboardPage() {
           </button>
         </form>
       </div>
-      <p className="mt-8 text-slate-600">Tasks and invites will appear here.</p>
+
+      <section className="mt-10">
+        <h2 className="mb-4 text-lg font-semibold">Invite a candidate</h2>
+        <InviteForm
+          tasks={tasks.map((task) => ({
+            id: task.id,
+            title: task.title,
+            summary: task.summary,
+            durationMinutes: task.durationMinutes,
+            measures: task.measures,
+          }))}
+        />
+      </section>
     </main>
   );
 }
