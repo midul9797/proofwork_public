@@ -8,6 +8,13 @@
       "when": 1790886712515,
       "tag": "0000_wakeful_young_avengers",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790979963390,
+      "tag": "0001_vengeful_valeria_richards",
+      "breakpoints": true
     }
   ]
 }

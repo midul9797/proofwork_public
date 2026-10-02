@@ -1,5 +1,4 @@
-import { eq } from "drizzle-orm";
-import { getDb, users, workspaces } from "@proofwork/db";
+import { eq, getDb, users, workspaces } from "@proofwork/db";
 
 /** Returns the user's row, creating a workspace with them as admin on first login. */
 export async function ensureUserWorkspace(authUser: { id: string; email?: string | undefined }) {
