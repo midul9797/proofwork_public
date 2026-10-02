@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "typecheck": "pnpm -r --if-present typecheck",
+    "test": "pnpm -r --if-present test",
     "db:generate": "pnpm --filter @proofwork/db generate",
     "db:migrate:dev": "pnpm --filter @proofwork/db migrate dev"
   },

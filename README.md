@@ -61,3 +61,25 @@ The spike lives in `packages/task-runner/spike/`. Both providers ran the same jo
 
 - The maximum sandbox lifetime and auto-stop behaviour for sessions longer than 60 minutes.
 - Concurrent sandbox limits on the plan we will use, for pilot sessions with several candidates at once.
+
+## `task-runner`
+
+Provider-neutral sandbox client in `packages/task-runner`. The rest of the app only sees the `Sandbox` interface: `create`, `writeFiles`, `run(command, { cwd, env, timeoutMs, onOutput })` and `destroy`. `DaytonaProvider` is the first implementation; adding E2B means adding one more class that implements `SandboxProvider`.
+
+```ts
+const sandbox = await new DaytonaProvider().create({ image: PLAYWRIGHT_IMAGE });
+await sandbox.writeFiles([{ path: "repo/package.json", content: "..." }]);
+const result = await sandbox.run("npx playwright test", {
+  cwd: "repo",
+  env: { PLAYWRIGHT_BROWSERS_PATH: "/ms-playwright" }, // Daytona does not carry over the image's ENV
+  onOutput: (chunk) => process.stdout.write(chunk),
+});
+await sandbox.destroy();
+```
+
+Notes for whoever extends it:
+
+- Daytona's built-in log stream adds 1 to 3 seconds at each end of a command, so `run` starts the command in the background, writes to a log file and polls it every 250 ms. A trivial command takes about 1 second end to end.
+- Each command runs in its own `bash -c`, so an `exit` or `cd` in one run never affects the next.
+- `pnpm test` runs the real-sandbox tests when `DAYTONA_API_KEY` is set and skips them otherwise.
+- `pnpm --filter @proofwork/task-runner spike:playwright` runs the fixture Playwright suite through the runner; `spike:cleanup` deletes any sandboxes left behind.

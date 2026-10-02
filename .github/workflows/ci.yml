@@ -6,6 +6,9 @@ on:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    env:
+      # Sandbox tests run against real Daytona and are skipped when the key is missing.
+      DAYTONA_API_KEY: ${{ secrets.DAYTONA_API_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
@@ -17,6 +20,7 @@ jobs:
       - run: pnpm lint
       - run: pnpm format:check
       - run: pnpm typecheck
+      - run: pnpm test
       - run: pnpm --filter @proofwork/web build
 
   migrate:

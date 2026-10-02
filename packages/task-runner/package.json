@@ -3,9 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "src/index.ts",
   "scripts": {
     "spike:e2b": "tsx spike/e2b.ts",
     "spike:daytona": "tsx spike/daytona.ts",
+    "spike:playwright": "tsx spike/playwright-via-runner.ts",
+    "spike:cleanup": "tsx spike/cleanup.ts",
+    "test": "tsx --test src/*.test.ts",
     "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
