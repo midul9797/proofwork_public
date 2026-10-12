@@ -1,0 +1,558 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T21:01:53.619Z",
+  "title": "Design System: Proofwork",
+  "extensions": {
+    "colorMeta": {
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#111418",
+        "oklch": "oklch(19.0% 0.009 255.6)",
+        "cssVar": "--bg",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#222426",
+          "#3c4045",
+          "#5a5e63",
+          "#7a7e83",
+          "#9b9fa4",
+          "#c3c8cd",
+          "#eceff2"
+        ]
+      },
+      "graphite-deep": {
+        "role": "neutral",
+        "displayName": "Graphite Deep",
+        "canonical": "#0d1013",
+        "oklch": "oklch(17.1% 0.008 248.3)",
+        "cssVar": "--bg-deep",
+        "tonalRamp": [
+          "#0a0b0d",
+          "#232426",
+          "#3d4044",
+          "#5a5e62",
+          "#7a7e82",
+          "#9b9fa3",
+          "#c3c8cc",
+          "#eceff1"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "#1a1e24",
+        "oklch": "oklch(23.4% 0.013 258.4)",
+        "cssVar": "--surface",
+        "tonalRamp": [
+          "#090b0e",
+          "#222427",
+          "#3c4047",
+          "#595e65",
+          "#797e85",
+          "#999fa7",
+          "#c2c8d0",
+          "#eceff3"
+        ]
+      },
+      "panel-raised": {
+        "role": "neutral",
+        "displayName": "Panel Raised",
+        "canonical": "#232830",
+        "oklch": "oklch(27.5% 0.016 259.8)",
+        "cssVar": "--raised",
+        "tonalRamp": [
+          "#090b0f",
+          "#222428",
+          "#3b4049",
+          "#585e67",
+          "#787e87",
+          "#989fa9",
+          "#c1c8d2",
+          "#ebeff4"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Slate Hairline",
+        "canonical": "#343b42",
+        "oklch": "oklch(34.9% 0.015 248.3)",
+        "cssVar": "--line",
+        "tonalRamp": [
+          "#090b0e",
+          "#212428",
+          "#3a4148",
+          "#575f66",
+          "#767e86",
+          "#979fa8",
+          "#c0c8d1",
+          "#ebeff4"
+        ]
+      },
+      "hairline-soft": {
+        "role": "neutral",
+        "displayName": "Soft Hairline",
+        "canonical": "rgb(52 59 66 / 0.55)",
+        "oklch": "oklch(34.9% 0.015 248.3)",
+        "cssVar": "--line-soft",
+        "tonalRamp": [
+          "#090b0e",
+          "#212428",
+          "#3a4148",
+          "#575f66",
+          "#767e86",
+          "#979fa8",
+          "#c0c8d1",
+          "#ebeff4"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#f3f5f2",
+        "oklch": "oklch(96.8% 0.004 134.8)",
+        "cssVar": "--text",
+        "tonalRamp": [
+          "#0b0b0a",
+          "#232423",
+          "#3f403e",
+          "#5c5e5c",
+          "#7c7e7b",
+          "#9d9f9c",
+          "#c6c8c5",
+          "#eeefed"
+        ]
+      },
+      "ink-secondary": {
+        "role": "neutral",
+        "displayName": "Ink Secondary",
+        "canonical": "#c3c9c4",
+        "oklch": "oklch(83.0% 0.010 150.7)",
+        "cssVar": "--text-2",
+        "tonalRamp": [
+          "#0a0c0a",
+          "#222523",
+          "#3c413d",
+          "#5a5f5b",
+          "#797f7a",
+          "#9aa09b",
+          "#c3c9c4",
+          "#ecefed"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#8e968f",
+        "oklch": "oklch(66.4% 0.014 149.2)",
+        "cssVar": "--muted",
+        "tonalRamp": [
+          "#090c0a",
+          "#222522",
+          "#3b423c",
+          "#586059",
+          "#788079",
+          "#99a19a",
+          "#c1cac2",
+          "#ebf0ec"
+        ]
+      },
+      "pencil-blue": {
+        "role": "primary",
+        "displayName": "Pencil Blue",
+        "canonical": "#3d68e8",
+        "oklch": "oklch(56.1% 0.200 266.0)",
+        "cssVar": "--accent",
+        "tonalRamp": [
+          "#010134",
+          "#0d1e53",
+          "#1028a7",
+          "#284ecc",
+          "#4571f2",
+          "#6395ff",
+          "#8ac0ff",
+          "#cfeeff"
+        ]
+      },
+      "pencil-blue-strong": {
+        "role": "primary",
+        "displayName": "Pencil Blue Strong",
+        "canonical": "#2d5be3",
+        "oklch": "oklch(52.7% 0.213 265.2)",
+        "cssVar": "--accent-strong",
+        "tonalRamp": [
+          "#010037",
+          "#0a1d56",
+          "#0a23ad",
+          "#214bd3",
+          "#3e70f9",
+          "#5d94ff",
+          "#83bfff",
+          "#cceeff"
+        ]
+      },
+      "pencil-blue-soft": {
+        "role": "primary",
+        "displayName": "Pencil Blue Soft",
+        "canonical": "#6d8ef0",
+        "oklch": "oklch(66.7% 0.150 268.1)",
+        "cssVar": "--accent-2",
+        "tonalRamp": [
+          "#02052a",
+          "#152148",
+          "#1f348d",
+          "#3a55b1",
+          "#5776d6",
+          "#7798fb",
+          "#9ec2ff",
+          "#d9eeff"
+        ]
+      },
+      "pencil-blue-text": {
+        "role": "primary",
+        "displayName": "Pencil Blue Text",
+        "canonical": "#9db4f3",
+        "oklch": "oklch(77.6% 0.094 268.7)",
+        "cssVar": "--accent-text",
+        "tonalRamp": [
+          "#04091f",
+          "#1a233b",
+          "#2b3c71",
+          "#485a93",
+          "#667bb6",
+          "#869cda",
+          "#aec5ff",
+          "#e1eeff"
+        ]
+      },
+      "caught-teal": {
+        "role": "secondary",
+        "displayName": "Caught Teal",
+        "canonical": "#19a28b",
+        "oklch": "oklch(63.9% 0.114 177.3)",
+        "cssVar": "--teal",
+        "tonalRamp": [
+          "#00120b",
+          "#002d24",
+          "#00513f",
+          "#00715d",
+          "#00937c",
+          "#38b59d",
+          "#69e0c6",
+          "#c7fcee"
+        ]
+      },
+      "caught-teal-ink": {
+        "role": "secondary",
+        "displayName": "Caught Teal Ink",
+        "canonical": "#062620",
+        "oklch": "oklch(24.3% 0.039 178.0)",
+        "cssVar": "--teal-ink",
+        "tonalRamp": [
+          "#030e0b",
+          "#1a2724",
+          "#284740",
+          "#46655e",
+          "#65857d",
+          "#85a79e",
+          "#add0c7",
+          "#e2f3ee"
+        ]
+      },
+      "flag-amber": {
+        "role": "tertiary",
+        "displayName": "Flag Amber",
+        "canonical": "#e0a04a",
+        "oklch": "oklch(75.2% 0.127 71.6)",
+        "cssVar": "--amber",
+        "tonalRamp": [
+          "#1a0400",
+          "#361e00",
+          "#672f00",
+          "#884e00",
+          "#ab6e00",
+          "#cf9038",
+          "#fab964",
+          "#ffe8c1"
+        ]
+      },
+      "flag-amber-ink": {
+        "role": "tertiary",
+        "displayName": "Flag Amber Ink",
+        "canonical": "#2a1a05",
+        "oklch": "oklch(23.4% 0.042 71.3)",
+        "tonalRamp": [
+          "#110a03",
+          "#2b2219",
+          "#4e3c26",
+          "#6d5a43",
+          "#8d7962",
+          "#af9b82",
+          "#d9c3aa",
+          "#f8ede0"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline and closing restatement only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section heads."
+      },
+      "headline-sm": {
+        "displayName": "Headline Small",
+        "purpose": "Feature row heads beside vignettes."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "List, row and FAQ titles."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "One supporting line under the display headline."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Paragraphs in ink secondary, max 30-36em."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Chips, sentence case."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Code in chat and diffs, timeline timecodes. Product material only."
+      },
+      "document": {
+        "displayName": "Document",
+        "purpose": "Task documents inside the replay panel. Product material only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-panel-lift",
+        "value": "0 0 0 1px rgb(0 0 0 / 0.35), 0 40px 80px -30px rgb(0 0 0 / 0.8), 0 18px 40px -20px rgb(0 0 0 / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.04)",
+        "purpose": "Hero replay panel, tilted rotateX(14deg) scale(0.97) with a bottom fade mask."
+      },
+      {
+        "name": "stage-lift",
+        "value": "0 30px 60px -30px rgb(0 0 0 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.04)",
+        "purpose": "Walkthrough stage."
+      },
+      {
+        "name": "vignette-lift",
+        "value": "0 24px 48px -28px rgb(0 0 0 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.04)",
+        "purpose": "Feature vignette panels."
+      },
+      {
+        "name": "button-weight",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px -6px rgb(45 91 227 / 0.55)",
+        "purpose": "Primary button at rest."
+      },
+      {
+        "name": "button-weight-hover",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.22), 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -8px rgb(45 91 227 / 0.7)",
+        "purpose": "Primary button hover."
+      },
+      {
+        "name": "segment-active",
+        "value": "0 1px 2px rgb(0 0 0 / 0.5)",
+        "purpose": "Selected segment in segmented controls."
+      },
+      {
+        "name": "focus-ring",
+        "value": "outline: 2px solid #6d8ef0; outline-offset: 3px",
+        "purpose": "Site-wide :focus-visible."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Single easing for every transition and entrance."
+      },
+      {
+        "name": "reveal",
+        "value": "opacity 700ms + translateY(14px) 900ms",
+        "purpose": "Section entrances; only when html[data-motion] is set (JS ran and no reduced-motion preference)."
+      },
+      {
+        "name": "tilt-in",
+        "value": "1600ms, 150ms delay; rotateX(26deg) scale(0.92) translateY(28px) blur(3px) to rotateX(14deg) scale(0.97)",
+        "purpose": "Hero replay panel entrance, motion-gated."
+      },
+      {
+        "name": "timeline-fill",
+        "value": "1800ms, 500ms delay",
+        "purpose": "Hero replay track fill and playhead, motion-gated."
+      },
+      {
+        "name": "walkthrough-ghost",
+        "value": "opacity 0.22, blur(1.5px) saturate(0.4); 600-700ms transitions",
+        "purpose": "Unreached walkthrough items before their step activates."
+      },
+      {
+        "name": "flag-resolve",
+        "value": "background and box-shadow 500ms, 300ms delay on the final step",
+        "purpose": "Amber flag line gives way to the outcome colour."
+      },
+      {
+        "name": "badge-resolve",
+        "value": "700ms, scale 0.85 to 1.04 to 1 with unblur",
+        "purpose": "Verdict badge arrival."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation and transition durations 1ms",
+        "purpose": "Global override under prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "panel-compact",
+        "value": "1100px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "rows-stack",
+        "value": "820px"
+      },
+      {
+        "name": "nav-collapse",
+        "value": "760px"
+      },
+      {
+        "name": "panel-mobile",
+        "value": "720px"
+      },
+      {
+        "name": "small",
+        "value": "520px"
+      },
+      {
+        "name": "hero-small",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single call to action (Start free). Pencil blue strong, white text, trailing arrow that nudges on hover.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Start free <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 8h10M9 4l4 4-4 4\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border-radius: 8px; background: var(--accent-strong, #2d5be3); color: #fff; font-family: var(--font-sans); font-weight: 600; font-size: 0.9375rem; letter-spacing: -0.005em; text-decoration: none; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.4), 0 6px 20px -6px rgb(45 91 227 / 0.55); transition: background-color 160ms cubic-bezier(0.16,1,0.3,1), transform 160ms cubic-bezier(0.16,1,0.3,1), box-shadow 160ms cubic-bezier(0.16,1,0.3,1); } .ds-btn svg { transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:hover { background: #3a66ea; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 28px -8px rgb(45 91 227 / 0.7); } .ds-btn:hover svg { transform: translateX(3px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--accent-2, #6d8ef0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Outcome Chips",
+      "kind": "chip",
+      "refersTo": "chip-flag",
+      "description": "Planted error flag (amber outline), Caught (filled teal), Missed (filled amber), Draft (pencil blue). Colour is meaning.",
+      "html": "<span class=\"ds-chip ds-chip--flag\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 14V2.5M4 3h7.5l-1.5 3 1.5 3H4\"/></svg> Planted error</span> <span class=\"ds-chip ds-chip--caught\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\"/></svg> Caught</span> <span class=\"ds-chip ds-chip--missed\">Missed</span> <span class=\"ds-chip ds-chip--draft\">Draft</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 9px; border-radius: 999px; font-family: var(--font-sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.005em; white-space: nowrap; } .ds-chip--flag { color: var(--amber, #e0a04a); background: rgb(224 160 74 / 0.1); box-shadow: inset 0 0 0 1px rgb(224 160 74 / 0.45); } .ds-chip--caught { color: var(--teal-ink, #062620); background: var(--teal, #19a28b); } .ds-chip--missed { color: #2a1a05; background: var(--amber, #e0a04a); } .ds-chip--draft { color: var(--accent-text, #9db4f3); background: rgb(61 104 232 / 0.14); box-shadow: inset 0 0 0 1px rgb(109 142 240 / 0.4); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky 60px graphite bar with blur, ink-secondary links, Sign in text link and small primary button.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\">Proofwork</a><nav class=\"ds-nav__links\"><a href=\"#\">How it works</a><a href=\"#\">Tasks</a><a href=\"#\">FAQ</a></nav><div class=\"ds-nav__actions\"><a class=\"ds-nav__link\" href=\"#\">Sign in</a><a class=\"ds-btn-sm\" href=\"#\">Start free</a></div></header>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 32px; height: 60px; padding: 0 24px; background: rgb(17 20 24 / 0.95); backdrop-filter: saturate(140%) blur(14px); border-bottom: 1px solid var(--line-soft, rgb(52 59 66 / 0.55)); font-family: var(--font-sans); } .ds-brand { font-weight: 700; font-size: 1.0625rem; letter-spacing: -0.02em; color: var(--text, #f3f5f2); text-decoration: none; } .ds-nav__links { display: flex; gap: 4px; } .ds-nav__links a, .ds-nav__link { padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-2, #c3c9c4); text-decoration: none; transition: color 140ms, background-color 140ms; } .ds-nav__links a:hover, .ds-nav__link:hover { color: var(--text, #f3f5f2); background: rgb(255 255 255 / 0.05); } .ds-nav__actions { margin-left: auto; display: flex; align-items: center; gap: 8px; } .ds-btn-sm { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border-radius: 7px; background: var(--accent-strong, #2d5be3); color: #fff; font-weight: 600; font-size: 0.875rem; text-decoration: none; } .ds-btn-sm:hover { background: #3a66ea; } .ds-nav a:focus-visible { outline: 2px solid var(--accent-2, #6d8ef0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Product Panel (vignette)",
+      "kind": "card",
+      "refersTo": "product-panel",
+      "description": "Authored product UI as imagery: graphite title bar, panel body, 14px corners, one lift, always captioned as example data.",
+      "html": "<figure class=\"ds-vig\"><div class=\"ds-vig__panel\"><div class=\"ds-vig__bar\">Evaluation · draft</div><div class=\"ds-vig__body\">Problem framing <span class=\"ds-vig__score\">72</span></div></div><figcaption class=\"ds-vig__cap\">Example data</figcaption></figure>",
+      "css": ".ds-vig { margin: 0; font-family: var(--font-sans); } .ds-vig__panel { border-radius: 14px; background: var(--surface, #1a1e24); border: 1px solid var(--line, #343b42); box-shadow: 0 24px 48px -28px rgb(0 0 0 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.04); overflow: hidden; font-size: 14px; color: var(--text-2, #c3c9c4); } .ds-vig__bar { padding: 11px 16px; border-bottom: 1px solid var(--line, #343b42); background: var(--bg, #111418); font-size: 12.5px; font-weight: 600; color: var(--muted, #8e968f); } .ds-vig__body { display: flex; justify-content: space-between; padding: 18px; } .ds-vig__score { font-weight: 600; color: var(--text, #f3f5f2); font-variant-numeric: tabular-nums; } .ds-vig__cap { margin-top: 10px; font-size: 0.8125rem; color: var(--muted, #8e968f); }"
+    },
+    {
+      "name": "Chat Messages with Planted Flag",
+      "kind": "custom",
+      "description": "User bubble (raised) and AI bubble (panel + hairline); the planted line gets an amber 2px left rule and wash.",
+      "html": "<div class=\"ds-chat\"><div class=\"ds-msg ds-msg--me\">Which request came up most?</div><div class=\"ds-msg ds-msg--ai\"><div class=\"ds-msg__who\">AI assistant</div><div class=\"ds-msg__prose\"><span>SSO is the clear leader:</span><span class=\"ds-flag-line\">requested by 7 of 12 customers.</span></div></div></div>",
+      "css": ".ds-chat { display: flex; flex-direction: column; gap: 12px; font-family: var(--font-sans); } .ds-msg { padding: 10px 12px; border-radius: 10px; font-size: 13px; line-height: 1.5; } .ds-msg--me { align-self: flex-end; max-width: 88%; background: var(--raised, #232830); color: var(--text, #f3f5f2); border-bottom-right-radius: 4px; } .ds-msg--ai { background: var(--surface, #1a1e24); border: 1px solid var(--line, #343b42); border-bottom-left-radius: 4px; color: var(--text-2, #c3c9c4); } .ds-msg__who { margin-bottom: 8px; font-size: 12px; font-weight: 600; color: var(--muted, #8e968f); } .ds-msg__prose { display: flex; flex-direction: column; padding: 8px 0; border-radius: 7px; background: var(--bg-deep, #0d1013); color: var(--text, #f3f5f2); } .ds-msg__prose > span { padding: 2px 12px; } .ds-flag-line { background: rgb(224 160 74 / 0.13); box-shadow: inset 2px 0 0 var(--amber, #e0a04a); }"
+    },
+    {
+      "name": "Verdict",
+      "kind": "custom",
+      "description": "Walkthrough outcome: teal for Caught, amber for Missed; the badge resolves with a short scale and unblur.",
+      "html": "<div class=\"ds-verdict ds-verdict--caught\"><span class=\"ds-verdict__badge\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3.5 8.5l3 3 6-7\"/></svg> Caught</span><span class=\"ds-verdict__text\">Recounted the table and corrected the brief.</span></div><div class=\"ds-verdict ds-verdict--missed\"><span class=\"ds-verdict__badge\">Missed</span><span class=\"ds-verdict__text\">Kept the AI&rsquo;s number.</span></div>",
+      "css": ".ds-verdict { display: flex; align-items: center; gap: 14px; padding: 14px; margin-bottom: 10px; border-radius: 12px; border: 1px solid; font-family: var(--font-sans); } .ds-verdict--caught { border-color: rgb(25 162 139 / 0.5); background: rgb(25 162 139 / 0.08); } .ds-verdict--missed { border-color: rgb(224 160 74 / 0.5); background: rgb(224 160 74 / 0.07); } .ds-verdict__badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 1rem; letter-spacing: -0.01em; animation: ds-resolve 700ms cubic-bezier(0.16,1,0.3,1); } .ds-verdict--caught .ds-verdict__badge { background: var(--teal, #19a28b); color: var(--teal-ink, #062620); } .ds-verdict--missed .ds-verdict__badge { background: var(--amber, #e0a04a); color: #2a1a05; } .ds-verdict__text { font-size: 13.5px; line-height: 1.45; color: var(--text-2, #c3c9c4); } @keyframes ds-resolve { 0% { transform: scale(0.85); filter: blur(2px); } 60% { transform: scale(1.04); filter: blur(0); } 100% { transform: scale(1); } } @media (prefers-reduced-motion: reduce) { .ds-verdict__badge { animation: none; } }"
+    },
+    {
+      "name": "Profession Switcher and Segmented Control",
+      "kind": "custom",
+      "refersTo": "profession-toggle",
+      "description": "Hairline pills that invert to ink when pressed; graphite-well segmented control with a raised active segment.",
+      "html": "<div class=\"ds-roles\"><button class=\"ds-role\" aria-pressed=\"true\">Product manager</button><button class=\"ds-role\" aria-pressed=\"false\">Sales</button></div><div class=\"ds-seg\"><button aria-pressed=\"true\">Caught</button><button aria-pressed=\"false\">Missed</button></div>",
+      "css": ".ds-roles { display: flex; gap: 8px; margin-bottom: 12px; } .ds-role { min-height: 38px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line, #343b42); background: transparent; color: var(--text-2, #c3c9c4); font: 500 0.9375rem/1 var(--font-sans); cursor: pointer; transition: background-color 160ms, color 160ms, border-color 160ms; } .ds-role:hover { color: var(--text, #f3f5f2); border-color: #4a535c; } .ds-role[aria-pressed=\"true\"] { background: var(--text, #f3f5f2); border-color: var(--text, #f3f5f2); color: var(--bg, #111418); } .ds-seg { display: inline-flex; padding: 3px; border-radius: 8px; background: var(--bg, #111418); border: 1px solid var(--line, #343b42); } .ds-seg button { min-height: 30px; padding: 0 14px; border: 0; border-radius: 6px; background: transparent; color: var(--text-2, #c3c9c4); font: 600 0.8125rem/1 var(--font-sans); cursor: pointer; } .ds-seg button:hover { color: var(--text, #f3f5f2); } .ds-seg button[aria-pressed=\"true\"] { background: var(--raised, #232830); color: var(--text, #f3f5f2); box-shadow: 0 1px 2px rgb(0 0 0 / 0.5); } .ds-role:focus-visible, .ds-seg button:focus-visible { outline: 2px solid var(--accent-2, #6d8ef0); outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Replay Desk",
+    "overview": "The landing page is category-standard SaaS polish executed at Linear craft, set on the same graphite as Proofwork's dark replay app. Nothing on the page is decoration borrowed from elsewhere: the imagery is the product's own interface (replay panel, walkthrough stage, feature vignettes) authored in HTML, and the one dramatic story it tells is a single planted mistake resolving to Caught or Missed. Type is a tight, confident grotesk; surfaces are flat graphite tiers separated by 1px hairlines; colour is spent almost entirely on meaning.\n\nDensity is generous at page level (long section rhythm, a single left-aligned column of argument) and dense inside the product panels, where small 12–14px UI text, file trees, timelines and chat bubbles read like the real app. That contrast is deliberate: calm marketing frame, believable working tool inside it.\n\nConfirmed rejections: no themed metaphor worlds (owner, PRODUCT.md), no invented proof (customers, logos, metrics), no headline-plus-three-feature-cards-plus-logo-strip layout.",
+    "keyCharacteristics": [
+      "Graphite ground with two raised tiers and 1px slate hairlines; depth by tone, not glow.",
+      "One pencil-blue accent for action and \"the AI's real answer\"; teal and amber are semantic, never decorative.",
+      "Schibsted Grotesk set tight (-0.03em to -0.042em) for display; JetBrains Mono only for code and timecodes; Newsreader only for task documents inside panels.",
+      "Authored product panels are the imagery system, always captioned as example data.",
+      "Signature motion: a sticky, scroll-driven walkthrough where the whole session is ghosted in and resolves step by step from an amber flag to the outcome."
+    ],
+    "rules": [
+      {
+        "name": "The Teal Means Caught Rule",
+        "body": "Teal appears only where a planted error was caught. Test passes, \"live\" states and success ticks use ink or pencil blue, never teal.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Means Look Here Rule",
+        "body": "Amber marks a planted error or a Missed outcome. It is never used for warnings, emphasis or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Accent Rule",
+        "body": "Pencil blue is the only brand hue. A screen should read as graphite with small, deliberate blue marks; never tint whole sections blue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Display and headline sizes always carry negative tracking (-0.028em or tighter) at weight 600; body text is never tracked.",
+        "section": "typography"
+      },
+      {
+        "name": "The Materials Rule",
+        "body": "JetBrains Mono and Newsreader are product materials, not voice. They never set marketing headings, body copy or labels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Panels Float, Page Stays Flat Rule",
+        "body": "Only product panels and the primary button cast shadows. Section backgrounds, list rows and text blocks are flat.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do build imagery from authored product UI (replay panel, stage, vignettes) and caption each one as example data.",
+      "Do keep teal for Caught and amber for planted errors and Missed, exactly as the walkthrough and chips use them.",
+      "Do set display and headline type at weight 600 with negative tracking (-0.028em to -0.042em).",
+      "Do separate sections and list rows with 1px hairlines and tone shifts rather than cards or shadows.",
+      "Do gate entrance motion on JS plus no reduced-motion preference so content is visible by default."
+    ],
+    "donts": [
+      "Don't use teal for test passes, \"live\" states or generic success.",
+      "Don't introduce a second brand hue or tint section backgrounds with pencil blue.",
+      "Don't set marketing headings or body in JetBrains Mono or Newsreader.",
+      "Don't add eyebrows or kickers above section heads; the headline opens each section.",
+      "Don't show customer logos, testimonials, metrics or pricing tiers that do not exist.",
+      "Don't fall back to the headline, three feature cards and logo strip layout."
+    ]
+  }
+}

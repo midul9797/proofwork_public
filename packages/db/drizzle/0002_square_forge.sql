@@ -1,1 +1,0 @@
-ALTER TABLE "tasks" ADD COLUMN "brief_md" text NOT NULL;

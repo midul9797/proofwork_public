@@ -1,12 +1,13 @@
 node_modules
 .next
-dist
-.env
-.env.*
-!.env.example
+out
 *.tsbuildinfo
-.vercel
-playwright-report
-test-results
 next-env.d.ts
+.env*.local
+.impeccable/config.local.json
+
+# never publish: real screenshots contain emails and real trap text
+screenshots/
+# local tooling and QA captures
 .claude/
+.impeccable/review/
