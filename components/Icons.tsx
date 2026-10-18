@@ -100,10 +100,10 @@ export const Mail = (p: P) => (
 export function Logo({ size = 22 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <rect x="1" y="1" width="22" height="22" rx="6" fill="#2d5be3" />
-      <path d="M7 6.5v11" stroke="#f3f5f2" strokeWidth="2" strokeLinecap="round" />
-      <path d="M7 6.5h5.5a3.5 3.5 0 010 7H7" stroke="#f3f5f2" strokeWidth="2" fill="none" strokeLinejoin="round" />
-      <circle cx="17.5" cy="17.5" r="2" fill="#19a28b" />
+      <rect x="1" y="1" width="22" height="22" rx="5" fill="#456f3a" />
+      <path d="M7 6.5v11" stroke="#ffffff" strokeWidth="2" strokeLinecap="round" />
+      <path d="M7 6.5h5.5a3.5 3.5 0 010 7H7" stroke="#ffffff" strokeWidth="2" fill="none" strokeLinejoin="round" />
+      <circle cx="17.5" cy="17.5" r="2" fill="#d5e7bd" />
     </svg>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Newsreader, Schibsted_Grotesk } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -7,21 +7,6 @@ const sans = Schibsted_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
-  display: "swap",
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-// The app's long-reading face; used for task documents inside the replay panel.
-const serif = Newsreader({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-serif",
   display: "swap",
 });
 
@@ -59,22 +44,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111418",
-  colorScheme: "dark",
+  themeColor: "#e5e1d8",
+  colorScheme: "light",
   width: "device-width",
   initialScale: 1,
 };
 
-// Marks the document as script-enabled so reveal motion can start from a hidden state.
-// Without JS, or with reduced motion, every element stays visible.
-const motionScript = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.motion='1'}catch(e){}`;
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${serif.variable}`} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: motionScript }} />
-      </head>
+    <html lang="en" className={sans.variable}>
       <body>{children}</body>
     </html>
   );

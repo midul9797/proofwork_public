@@ -1,410 +1,96 @@
-import { ArrowRight, Chat, Check, Clock, Eye, Flag, Logo } from "@/components/Icons";
+import { ArrowRight, Check, FileIcon, Logo } from "@/components/Icons";
 import { Nav } from "@/components/Nav";
-import { ReplayPanel } from "@/components/ReplayPanel";
+import { AssessmentExample } from "@/components/AssessmentExample";
+import { RoleExplorer } from "@/components/RoleExplorer";
 import { Reveals } from "@/components/Reveals";
-import { StartFree } from "@/components/StartFree";
-import {
-  BaselineVignette,
-  EvaluationVignette,
-  ExplainBackVignette,
-  KeyMomentsVignette,
-  ReplayVignette,
-  TrapsVignette,
-} from "@/components/Vignettes";
-import { Walkthrough } from "@/components/Walkthrough";
-import { faqs, roles } from "@/lib/content";
-import { LOGIN_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { faqs } from "@/lib/content";
+import { CONTACT_EMAIL, CONTACT_URL, DEMO_URL, LOGIN_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
-const problems = [
-  {
-    claim: "AI does the take-home.",
-    detail:
-      "Every candidate has a capable assistant. A finished assignment, whether a spec, a forecast or a fix, no longer shows who did the thinking.",
-  },
-  {
-    claim: "Polished work can’t tell skill from copy-paste.",
-    detail: "A clean answer looks the same whether the candidate reasoned it through or pasted it in.",
-  },
-  {
-    claim: "Interviews take weeks.",
-    detail: "Without a signal you trust, you add rounds. Each one costs your team time and costs you candidates.",
-  },
+const dimensions = [
+  { name: "Problem framing", description: "Understands the task, identifies constraints, and structures an approach.", evidence: "The questions they ask before they begin." },
+  { name: "AI collaboration", description: "Supplies context and directs AI toward useful work.", evidence: "The instructions and decisions that shape the answer." },
+  { name: "Verification", description: "Checks important claims and validates information.", evidence: "The sources they return to and the claims they check." },
+  { name: "Domain judgment", description: "Applies professional knowledge and makes considered trade-offs.", evidence: "The choices they make when the answer is not obvious." },
+  { name: "Outcome", description: "Delivers work that is correct, relevant, and useful for the task.", evidence: "The actual submission, assessed against the brief." },
 ];
 
-const how = [
-  { name: "Invite", text: "Choose the role, pick a task and send the candidate a link." },
-  {
-    name: "They work",
-    text: "A real workspace for the job: documents and data, or an editor and tests, plus an AI assistant they are allowed to use.",
-  },
-  { name: "Replay", text: "Everything they typed, pasted, ran and asked, second by second." },
-  { name: "Decide", text: "A draft evaluation with checked evidence. You override any score." },
-];
-
-const features = [
-  {
-    id: "traps",
-    title: "Planted mistakes, checked after submission",
-    body: "Some AI answers carry a deliberate error: a feature that isn’t live yet, a wrong date, an off-by-one. After the candidate submits, Proofwork checks whether each one was caught or missed. A candidate who reads what the AI gives them looks different from one who pastes it.",
-    Vignette: TrapsVignette,
-  },
-  {
-    id: "replay",
-    title: "What the AI said, next to what they saw",
-    body: "Replay the whole session second by second: typing, pastes, test runs and every AI exchange. Where an answer was planted, see the AI’s real answer beside the version the candidate was shown.",
-    Vignette: ReplayVignette,
-  },
-  {
-    id: "moments",
-    title: "Key moments, so you know where to look",
-    body: "First message to the assistant, inserts and large pastes from the AI, planted errors, test runs, regressions, quiet stretches, time away from the window and submission. Worked out by plain rules: facts, not judgments.",
-    Vignette: KeyMomentsVignette,
-  },
-  {
-    id: "evaluation",
-    title: "A draft evaluation you can check",
-    body: "On request, an AI judge drafts scores for five competencies, from problem framing to verification, each with evidence. Every quote is checked against the real session, and evidence that doesn’t check out is dropped. It stays a draft until you mark your own evaluation final.",
-    Vignette: EvaluationVignette,
-  },
-  {
-    id: "baseline",
-    title: "The AI-only baseline",
-    body: "See what the AI scores on the same task working alone. You can tell at a glance whether the candidate added anything beyond the assistant.",
-    Vignette: BaselineVignette,
-  },
-  {
-    id: "explain",
-    title: "Explain-back",
-    body: "After submitting, the candidate can answer short questions about their own work. You also get suggested questions to take into the interview.",
-    Vignette: ExplainBackVignette,
-  },
+const workflow = [
+  { title: "Choose and invite", text: "Select an available role and task, then send the candidate an invitation.", preview: "Product manager", detail: "Prioritise next quarter", kind: "invite" },
+  { title: "Complete the task", text: "The candidate works with relevant materials and an AI assistant in the assessment workspace.", preview: "Task materials + AI assistant", detail: "A workspace built around the work", kind: "work" },
+  { title: "Review the evidence", text: "Inspect the submitted work, draft evaluation, and selected moments from the session.", preview: "Recommendation → Evidence", detail: "Follow the reasoning back to its source", kind: "review" },
+  { title: "Make your assessment", text: "Review the draft, adjust it where needed, and decide your next interview step.", preview: "Your assessment", detail: "Every rating remains yours to change", kind: "decide" },
 ];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SITE_URL}/#org`,
-      name: SITE_NAME,
-      url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/icon.svg`,
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE_URL}/#website`,
-      url: `${SITE_URL}/`,
-      name: SITE_NAME,
-      publisher: { "@id": `${SITE_URL}/#org` },
-      inLanguage: "en",
-    },
-    {
-      "@type": "SoftwareApplication",
-      name: SITE_NAME,
-      applicationCategory: "BusinessApplication",
-      operatingSystem: "Web browser",
-      description: SITE_DESCRIPTION,
-      url: `${SITE_URL}/`,
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free in early access" },
-      publisher: { "@id": `${SITE_URL}/#org` },
-    },
-    {
-      "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
+    { "@type": "Organization", "@id": `${SITE_URL}/#org`, name: SITE_NAME, url: `${SITE_URL}/`, logo: `${SITE_URL}/icon.svg`, email: CONTACT_EMAIL },
+    { "@type": "WebSite", url: `${SITE_URL}/`, name: SITE_NAME, description: SITE_DESCRIPTION, publisher: { "@id": `${SITE_URL}/#org` } },
+    { "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) },
   ],
 };
 
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <Nav />
       <main id="main">
-        {/* Hero */}
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="wrap">
-            <h1 id="hero-title" className="hero__title">
-              See how candidates work with AI, not just what&nbsp;they&nbsp;ship.
-            </h1>
-            <p className="hero__sub">Hands-on interview tasks for every role that works with AI, not only engineers.</p>
-            <p className="hero__lede">
-              AI is allowed. Proofwork plants mistakes in some of its answers, records the whole session, and shows you
-              whether the candidate caught them.
-            </p>
-            <StartFree />
-            <a className="hero__roles" href="#tasks">
-              Browse roles and tasks <ArrowRight />
-            </a>
-          </div>
-          <div className="wrap wrap--wide">
-            <ReplayPanel />
-          </div>
-        </section>
-
-        {/* Signature: walkthrough */}
-        <section className="section section--walk" aria-labelledby="walk-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="walk-title">One planted mistake. Two kinds of candidate.</h2>
-              <p>
-                Scroll through an example session for any role. The AI&rsquo;s answer looks right. Whether the
-                candidate notices is the signal a take-home can&rsquo;t give you.
-              </p>
-            </header>
-            <Walkthrough />
-          </div>
-        </section>
-
-        {/* Problem */}
-        <section className="section" aria-labelledby="problem-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="problem-title">The take-home stopped working.</h2>
-              <p>Not just for engineers. Any job now done with AI has the same problem.</p>
-            </header>
-            <ul className="problems">
-              {problems.map((p) => (
-                <li key={p.claim} data-reveal>
-                  <p className="problems__claim">{p.claim}</p>
-                  <p className="problems__detail">{p.detail}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section className="section section--how" id="how" aria-labelledby="how-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="how-title">How it works</h2>
-              <p>From invite to decision, on your own schedule.</p>
-            </header>
-            <ol className="how" data-reveal>
-              {how.map(({ name, text }, i) => (
-                <li key={name} className={`how__step how__step--${i}`}>
-                  <span className="how__tick" aria-hidden="true" />
-                  <h3>{name}</h3>
-                  <p>{text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        {/* Features */}
-        <section className="section section--features" aria-label="Features">
-          <div className="wrap">
-            {features.map(({ id, title, body, Vignette }, i) => (
-              <article key={id} id={id} className={`feature${i % 2 ? " feature--flip" : ""}`} data-reveal>
-                <div className="feature__text">
-                  <h2>{title}</h2>
-                  <p>{body}</p>
-                </div>
-                <Vignette />
-              </article>
-            ))}
-          </div>
-        </section>
-
-        {/* Tasks by profession */}
-        <section className="section" id="tasks" aria-labelledby="tasks-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="tasks-title">Interview tasks for every role</h2>
-              <p>
-                Pick the role you&rsquo;re hiring for, then a timed task. New roles are added as they&rsquo;re ready,
-                for any job where people now do the work with AI.
-              </p>
-            </header>
-            <div className="roles-grid">
-              {roles.map((r) => (
-                <article key={r.role} className="role" data-reveal>
-                  <h3 className="role__name">{r.role}</h3>
-                  <ul className="role__tasks">
-                    {r.tasks.map((t) => (
-                      <li key={t.name}>
-                        <p className="role__task">{t.name}</p>
-                        {t.text && <p className="role__text">{t.text}</p>}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="role__meta">
-                    <Clock /> {r.tasks.length} timed tasks · AI assistant included
-                  </p>
-                </article>
-              ))}
-              <article className="role role--next" data-reveal>
-                <h3 className="role__name">Next professions</h3>
-                <p className="role__text">
-                  Proofwork is built for any role that uses AI to do the job. New professions and tasks are added
-                  as they are ready.
-                </p>
-              </article>
+        <section className="hero wrap" aria-labelledby="hero-title">
+          <div className="hero__copy">
+            <h1 id="hero-title"><span>See how candidates</span><span>work with AI.</span></h1>
+            <div className="hero__intro">
+              <p>Hands-on assessments.<br />Evidence you can review.</p>
+              <p>Assess how candidates frame problems, direct AI, check information, apply domain judgment, and deliver useful results.</p>
             </div>
           </div>
+          <div className="hero__actions"><a className="btn" href={DEMO_URL}>Request a demo <ArrowRight /></a><a className="text-link" href="#sample-evaluation">View a sample evaluation</a></div>
+          <p className="hero__roles">Hands-on assessments for product managers, business analysts, sales professionals, and QA/SDET candidates.</p>
         </section>
 
-        {/* Fair to candidates */}
-        <section className="section section--fair" aria-labelledby="fair-title">
-          <div className="wrap fair">
-            <div className="fair__text" data-reveal>
-              <h2 id="fair-title">Fair to candidates</h2>
-              <p>
-                A good signal starts with a fair test. The workspace is built to stay calm and legible under time
-                pressure, and nothing about it is hidden from the person taking it.
-              </p>
-              <ul className="fair__list">
-                <li>
-                  <Clock />
-                  <span>
-                    <strong>A calm, timed workspace.</strong> The time limit is shown before they start and stays in
-                    view.
-                  </span>
-                </li>
-                <li>
-                  <Chat />
-                  <span>
-                    <strong>AI openly allowed.</strong> Using it well is part of the skill. Sending more messages is
-                    never rewarded.
-                  </span>
-                </li>
-                <li>
-                  <Eye />
-                  <span>
-                    <strong>Consent first.</strong> Candidates agree to recording before the task begins.
-                  </span>
-                </li>
-              </ul>
+        <section className="example-section wrap" id="sample-evaluation" aria-label="Illustrative assessment with fictional data">
+          <AssessmentExample />
+          <div className="example-caption"><p>Illustrative assessment with fictional data</p><p>Explore the task, the approach, the result, and the evaluation.</p></div>
+        </section>
+
+        <section className="section problem wrap" aria-labelledby="problem-title">
+          <h2 id="problem-title" data-reveal>The result is only<br />part of the story.</h2>
+          <div className="problem__body" data-reveal><p>A finished assignment shows what a candidate delivered. When AI is part of the work, you also need to understand the decisions behind it.</p><p>How did they interpret the brief? What did they check? Which trade-offs did they make? Proofwork brings that work into view.</p></div>
+        </section>
+
+        <section className="dimensions-section" id="dimensions" aria-labelledby="dimensions-title">
+          <div className="wrap dimensions-layout">
+            <div className="dimensions-intro"><h2 id="dimensions-title" data-reveal>Five dimensions.<br />A fuller picture.</h2><p data-reveal>Evaluate the decisions behind the result, with supporting evidence from the session and submitted work.</p><a href="#sample-evaluation" className="text-link" data-reveal>Explore the example evaluation</a></div>
+            <div className="dimensions-list">{dimensions.map((d) => <article className="dimension" key={d.name} data-reveal><h3>{d.name}</h3><p>{d.description}</p><span>{d.evidence}</span></article>)}</div>
+          </div>
+          <div className="wrap reviewer-note" data-reveal><Check /><p>A draft to support your judgment. Review the reasoning, inspect the evidence, and change any rating before making your own assessment.</p></div>
+        </section>
+
+        <section className="section wrap evidence-section" aria-labelledby="evidence-title">
+          <div className="section-heading"><h2 id="evidence-title" data-reveal>Follow the evidence.</h2><p data-reveal>Move from an evaluation to the work behind it. Keep observed actions separate from interpretations.</p></div>
+          <div className="evidence-showcase">
+            <div className="replay-fragment" data-ui data-reveal>
+              <div className="fragment-bar"><span>Selected session moments</span><span>Product manager</span></div>
+              <div className="replay-moment"><span>03:12</span><div><strong>Frames the constraints</strong><p>Identifies capacity and a dependency before ranking the options.</p></div></div>
+              <div className="replay-moment replay-moment--selected"><span>14:06</span><div><strong>Returns to the source</strong><p>Checks the usage table before relying on an impact claim.</p></div><Check /></div>
+              <div className="replay-moment"><span>41:05</span><div><strong>Submits the recommendation</strong><p>A delivery sequence with the trade-offs made explicit.</p></div></div>
+              <div className="replay-track"><span /><i /><i /><i /></div><div className="replay-times"><span>00:00</span><span>41:05</span></div>
             </div>
-            <figure className="vig consent" data-reveal>
-              <div className="vig__panel" aria-hidden="true">
-                <div className="vig__bar">Before you start</div>
-                <div className="vig__body">
-                  <p className="consent__h">This session is recorded</p>
-                  <p className="consent__p">
-                    Your typing, pastes, test runs, AI chat and time away from this window are recorded so the
-                    reviewer can replay how you worked. The AI assistant is allowed.
-                  </p>
-                  <div className="consent__row">
-                    <span className="consent__time">
-                      <Clock /> 45 min, shown before you start
-                    </span>
-                    <span className="eval__btn eval__btn--primary">I agree, start the task</span>
-                  </div>
-                </div>
-              </div>
-              <figcaption className="vig__cap">Example screen</figcaption>
-            </figure>
+            <div className="evidence-explanation"><h3 data-reveal>A session, with context.</h3><p data-reveal>Replay the work and jump to selected moments, including AI exchanges, edits, and submission. The evaluation gives you a place to start; the session lets you inspect it.</p><div className="explain-note" data-reveal><h3>Continue the conversation.</h3><p>Optional explain-back questions help explore the candidate’s understanding and prepare a more specific follow-up interview.</p></div><p className="illustration-note">Illustrative assessment with fictional data</p></div>
           </div>
         </section>
 
-        {/* For candidates */}
-        <section className="section section--cand" id="candidates" aria-labelledby="cand-title">
-          <div className="wrap cand">
-            <header className="cand__head" data-reveal>
-              <h2 id="cand-title">Taking a Proofwork task?</h2>
-              <p>
-                If a company sent you a Proofwork link, here is everything that will happen. No surprises, nothing
-                hidden from you.
-              </p>
-            </header>
-            <ol className="cand__rules" data-reveal>
-              <li>
-                <h3>Use the AI the way you would at work.</h3>
-                <p>The assistant in the workspace is allowed. Using it well is part of what the task looks at.</p>
-              </li>
-              <li>
-                <h3>It is sometimes wrong on purpose.</h3>
-                <p>
-                  Some answers contain a deliberate mistake. Check what it gives you against the materials, the data
-                  or the tests before you rely on it, just as you would with any colleague&rsquo;s work.
-                </p>
-              </li>
-              <li>
-                <h3>Your session is recorded, with your consent.</h3>
-                <p>
-                  Typing, pastes, test runs, the AI chat and time away from the window. You agree to this before the
-                  task starts, and the time limit is shown up front.
-                </p>
-              </li>
-              <li>
-                <h3>More AI messages won&rsquo;t raise your score.</h3>
-                <p>How often you ask is context only. What counts is how you check, decide and explain your work.</p>
-              </li>
-            </ol>
-          </div>
-        </section>
+        <section className="how-section" id="how" aria-labelledby="how-title"><div className="wrap"><div className="section-heading"><h2 id="how-title" data-reveal>From invitation to insight.</h2><p data-reveal>A task for the candidate. A reviewable body of work for you.</p></div><ol className="workflow">{workflow.map((step) => <li key={step.title} data-reveal><div className={`workflow-preview workflow-preview--${step.kind}`} data-ui><span>{step.kind === "decide" ? <Check /> : <FileIcon />}{step.preview}</span><p>{step.detail}</p>{step.kind === "review" && <div className="preview-evidence"><span /><span /><span /><span /><span /></div>}</div><h3>{step.title}</h3><p>{step.text}</p></li>)}</ol></div></section>
 
-        {/* FAQ */}
-        <section className="section" id="faq" aria-labelledby="faq-title">
-          <div className="wrap faq-wrap">
-            <header className="head head--side" data-reveal>
-              <h2 id="faq-title">Questions</h2>
-              <p>
-                Something else? <a href={LOGIN_URL}>Start free</a> and look around. It takes a work email.
-              </p>
-            </header>
-            <div className="faq">
-              {faqs.map((f) => (
-                <details key={f.q}>
-                  <summary>
-                    <h3>{f.q}</h3>
-                    <span className="faq__icon" aria-hidden="true" />
-                  </summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+        <section className="section wrap roles-section" id="tasks" aria-labelledby="tasks-title"><div className="section-heading"><h2 id="tasks-title" data-reveal>Built around the role.</h2><p data-reveal>Work that calls for professional judgment. Explore the four roles currently covered by Proofwork.</p></div><RoleExplorer /><div className="development-note" data-reveal><span>In development</span><div><h3>Assessments for your requirements.</h3><p>We’re building tools to help hiring teams create AI-assisted assessments around their own requirements, with automated checks during task preparation.</p></div></div></section>
 
-        {/* Final CTA */}
-        <section className="final" aria-labelledby="final-title">
-          <div className="wrap">
-            <h2 id="final-title" className="final__title" data-reveal>
-              See how candidates work with AI, not just what&nbsp;they&nbsp;ship.
-            </h2>
-            <div className="final__mini" aria-hidden="true">
-              <span className="chip chip--flag">
-                <Flag /> Planted error
-              </span>
-              <span className="final__arrow" />
-              <span className="chip chip--caught">
-                <Check /> Caught
-              </span>
-            </div>
-            <StartFree />
-          </div>
-        </section>
+        <section className="candidate-section" id="candidates" aria-labelledby="candidate-title"><div className="wrap candidate-layout"><div><h2 id="candidate-title" data-reveal>Know what to expect.</h2><p data-reveal>Taking a Proofwork task? You should understand the workspace, the recording, and the evaluation before you agree to begin.</p></div><div className="candidate-info"><article data-reveal><h3>AI is part of the task.</h3><p>Use the assistant in the workspace. How you direct, check, and apply its work matters; the number of prompts does not earn points.</p></article><article data-reveal><h3>Know what is recorded.</h3><p>Typing, pastes, test runs, AI exchanges, and time away from the assessment window are recorded. You agree to recording before starting, and the time allowance is shown up front.</p></article><article data-reveal><h3>Check what you rely on.</h3><p>The assistant can include deliberate mistakes. Check important claims against the materials, data, or tests. Verification is one of five evaluation dimensions.</p></article><article data-reveal><h3>A person makes the assessment.</h3><p>The evaluation is a draft. The reviewer can inspect the evidence, change ratings, and ask follow-up questions about your work.</p></article></div></div></section>
+
+        <section className="section wrap faq-section" id="faq" aria-labelledby="faq-title"><div className="faq-intro"><h2 id="faq-title" data-reveal>A few more details.</h2><p>Something else on your mind?<br /><a className="text-link" href={CONTACT_URL}>Ask the founder</a></p></div><div className="faq-list">{faqs.map((faq) => <details key={faq.q} data-reveal><summary><h3>{faq.q}</h3><span aria-hidden="true">+</span></summary><p>{faq.a}</p></details>)}</div></section>
+
+        <section className="contact-section" id="contact" aria-labelledby="contact-title"><div className="wrap"><div className="contact-heading"><h2 id="contact-title" data-reveal>See the work<br />behind the answer.</h2><div data-reveal><p>Hiring for a role that works with AI?<br />Let’s walk through an assessment together.</p><a className="btn" href={DEMO_URL}>Request a demo <ArrowRight /></a></div></div></div></section>
       </main>
-
-      <footer className="foot">
-        <div className="wrap foot__in">
-          <a className="brand" href="/" aria-label="Proofwork home">
-            <Logo />
-            <span>Proofwork</span>
-          </a>
-          <nav aria-label="Footer" className="foot__nav">
-            <a href="#how">How it works</a>
-            <a href="#tasks">Tasks</a>
-            <a href="#faq">FAQ</a>
-            <a href="#candidates">For candidates</a>
-            <a href={LOGIN_URL}>Sign in</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/terms">Terms</a>
-          </nav>
-          <p className="foot__fine">© 2026 Proofwork. Example sessions on this page use invented data.</p>
-        </div>
-      </footer>
+      <footer className="foot wrap"><div className="foot__top"><a className="brand" href="/" aria-label="Proofwork home"><Logo /><span>Proofwork</span></a><nav aria-label="Footer"><a href="#sample-evaluation">The assessment</a><a href="#tasks">Roles</a><a href="#candidates">For candidates</a><a href={LOGIN_URL}>Sign in</a><a href={CONTACT_URL}>Contact</a></nav></div><div className="foot__bottom"><p>Better questions start with the work.</p><span>© 2026 Proofwork</span></div></footer>
       <Reveals />
     </>
   );
