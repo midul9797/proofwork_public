@@ -1,14 +1,14 @@
-import { LOGIN_URL } from "@/lib/site";
+import { DEMO_URL } from "@/lib/site";
 import { ArrowRight, Mail } from "./Icons";
 
 export function StartFree({ id }: { id?: string }) {
   return (
     <div className="start" id={id}>
-      <a className="btn btn--lg" href={LOGIN_URL}>
-        Start free <ArrowRight />
+      <a className="btn btn--lg" href={DEMO_URL}>
+        Request a demo <ArrowRight />
       </a>
       <p className="start__note">
-        <Mail /> Sign in with your work email: a magic link, no password, no card. Free in early access.
+        <Mail /> Access is arranged directly. Tell us which role you&rsquo;re hiring for.
       </p>
     </div>
   );

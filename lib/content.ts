@@ -1,3 +1,5 @@
+import { CONTACT_EMAIL } from "./site";
+
 export const roles = [
   {
     role: "Product manager",
@@ -14,11 +16,17 @@ export const roles = [
   },
   {
     role: "Business analyst",
-    tasks: [{ name: "Revenue drop diagnosis" }, { name: "Two dashboards disagree" }],
+    tasks: [
+      { name: "Revenue drop diagnosis", text: "Investigate a change in revenue, check the supporting data, and recommend what to examine next." },
+      { name: "Two dashboards disagree", text: "Reconcile conflicting metrics, examine definitions and assumptions, and explain which numbers to use." },
+    ],
   },
   {
     role: "Sales",
-    tasks: [{ name: "Pipeline review and forecast call" }, { name: "Recover a stalled deal" }],
+    tasks: [
+      { name: "Pipeline review and forecast call", text: "Review opportunities, challenge assumptions, and build a forecast you can explain." },
+      { name: "Recover a stalled deal", text: "Assess the account context and propose a practical next step grounded in the buyer’s needs." },
+    ],
   },
   {
     role: "QA / SDET",
@@ -30,43 +38,12 @@ export const roles = [
 ] as { role: string; tasks: { name: string; text?: string }[] }[];
 
 export const faqs: { q: string; a: string }[] = [
-  {
-    q: "Which roles can I hire for?",
-    // Built from `roles`, so it stays current as roles are added.
-    a: `Any role where people now do the work with AI. Roles available today: ${new Intl.ListFormat("en", { type: "conjunction" }).format(roles.map((r) => r.role))}. New roles are added as they’re ready.`,
-  },
-  {
-    q: "Is AI allowed?",
-    a: "Yes. An AI assistant sits inside the workspace and candidates are told up front that using it is part of the task. Sending more AI messages is never rewarded; message counts are shown as context only.",
-  },
-  {
-    q: "Is the AI ever wrong on purpose?",
-    a: "Yes, and we say so openly. Some answers contain a deliberate mistake, so checking the assistant’s work is part of the task, just as it is on the job. Which answers are planted is never shown during the task.",
-  },
-  {
-    q: "What is recorded?",
-    a: "Everything the candidate types, pastes, runs and asks the AI, what the AI answered, and time spent away from the window. Candidates agree to recording before the task starts.",
-  },
-  {
-    q: "How long are tasks?",
-    a: "Every task is timed, for example 45 minutes for the product manager tasks. The candidate sees the limit before starting, and the timer stays in view.",
-  },
-  {
-    q: "Can I override the evaluation?",
-    a: "Always. The AI judge only drafts scores, and every quote it cites is checked against the real session. You can change any score and mark your own evaluation final.",
-  },
-  {
-    q: "Where is data stored?",
-    a: "On Supabase, in the Tokyo region.",
-  },
-  {
-    q: "Do candidates install anything?",
-    a: "No. The workspace runs in a desktop browser with its own sandbox per candidate: the task's files and documents, an editor and test runner where the task needs them, and the AI chat.",
-  },
-  {
-    q: "What does it cost?",
-    a: "Proofwork is free while in early access. Sign in with your work email; no password and no card.",
-  },
+  { q: "What does Proofwork evaluate?", a: "Five dimensions: problem framing, AI collaboration, verification, domain judgment, and outcome. Each draft evaluation links to evidence from the session or submitted work. An observed action and an interpretation of it are different; reviewers should inspect both." },
+  { q: "Can I change the evaluation?", a: "Yes. The evaluation remains a draft until the reviewer finalises it. You can inspect the supporting evidence and change any rating. A quote matching the session confirms the quote, not the correctness of the evaluator’s interpretation." },
+  { q: "How long does an assessment take?", a: "The product manager tasks allow 45 minutes. Each task’s time allowance is shown before the candidate begins and stays visible in the workspace. Other roles use the time allowance specified for their task." },
+  { q: "Do candidates need to install anything?", a: "No. Candidates complete the task in a desktop browser. The assessment workspace contains relevant materials and an AI assistant, plus an editor and test runner where the task calls for them." },
+  { q: "Can we create our own assessments?", a: "Custom assessment creation is in development. The current workflow uses the available role-based tasks. Contact the founder to discuss your requirements and what is currently available." },
+  { q: "How do I get access?", a: `Access is arranged directly while we work with interested hiring teams. Request a demo or contact ${CONTACT_EMAIL} to discuss your role, access, and the current offer.` },
 ];
 
 export const keyMoments = [
