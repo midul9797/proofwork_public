@@ -8,11 +8,11 @@ export const SITE_URL = siteUrl().replace(/\/$/, "");
 export const APP_URL = (process.env.NEXT_PUBLIC_APP_URL ?? "https://proofwork-public.vercel.app").replace(/\/$/, "");
 export const LOGIN_URL = `${APP_URL}/login`;
 
-export const SITE_NAME = "Proofwork";
+export const SITE_NAME = "Evaliro";
 export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "moklasurrahman9797@gmail.com";
-export const DEMO_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("A Proofwork demo")}&body=${encodeURIComponent("Hi Moklasur,\n\nI’d like to see Proofwork in action.\n\nMy team:\nThe role we’re hiring for:\n\nThanks!")}`;
-export const CONTACT_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("A question about Proofwork")}`;
+export const DEMO_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("An Evaliro demo")}&body=${encodeURIComponent("Hi Moklasur,\n\nI’d like to see Evaliro in action.\n\nMy team:\nThe role we’re hiring for:\n\nThanks!")}`;
+export const CONTACT_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("A question about Evaliro")}`;
 
-export const SITE_TITLE = "Proofwork — See how candidates solve real work with AI";
+export const SITE_TITLE = "Evaliro — See how candidates solve real work with AI";
 export const SITE_DESCRIPTION =
-  "Hands-on AI-assisted assessments for product managers, business analysts, sales, and QA/SDET. Review problem framing, AI collaboration, verification, domain judgment, and outcomes with evidence from the work.";
+  "Generate AI-assisted candidate assessments around your role, with reviewed task materials and editable scoring. Review problem framing, AI collaboration, verification, domain judgment, and outcomes with evidence from the work.";

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { SVGProps } from "react";
 
 type P = SVGProps<SVGSVGElement>;
@@ -97,13 +98,9 @@ export const Mail = (p: P) => (
   </Svg>
 );
 
+// public/logo.png is app/icon.svg cropped to the artwork (248×192); the SVG embeds rasters and weighs 723KB.
+const LOGO_RATIO = 248 / 192;
+
 export function Logo({ size = 22 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <rect x="1" y="1" width="22" height="22" rx="6" fill="#2d5be3" />
-      <path d="M7 6.5v11" stroke="#f3f5f2" strokeWidth="2" strokeLinecap="round" />
-      <path d="M7 6.5h5.5a3.5 3.5 0 010 7H7" stroke="#f3f5f2" strokeWidth="2" fill="none" strokeLinejoin="round" />
-      <circle cx="17.5" cy="17.5" r="2" fill="#19a28b" />
-    </svg>
-  );
+  return <Image src="/logo.png" alt="" width={Math.round(size * LOGO_RATIO)} height={size} loading="eager" />;
 }

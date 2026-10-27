@@ -8,13 +8,13 @@ export function Nav() {
         Skip to content
       </a>
       <div className="nav__in">
-        <a className="brand" href="/" aria-label="Proofwork home">
+        <a className="brand" href="/" aria-label="Evaliro home">
           <Logo />
-          <span>Proofwork</span>
+          <span>Evaliro</span>
         </a>
         <nav aria-label="Primary" className="nav__links">
           <a href="#sample-evaluation">The assessment</a>
-          <a href="#tasks">Roles</a>
+          <a href="#tasks">Task generation</a>
           <a href="#faq">FAQ</a>
         </nav>
         <div className="nav__actions">

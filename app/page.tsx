@@ -11,8 +11,9 @@ import {
   ReplayVignette,
   TrapsVignette,
 } from "@/components/Vignettes";
+import { TaskGeneration } from "@/components/TaskGeneration";
 import { Walkthrough } from "@/components/Walkthrough";
-import { faqs, roles } from "@/lib/content";
+import { faqs } from "@/lib/content";
 import { CONTACT_URL, LOGIN_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const problems = [
@@ -22,7 +23,7 @@ const problems = [
 ];
 
 const how = [
-  { name: "Choose and invite", text: "Select an available role and task, then send the candidate an invitation." },
+  { name: "Create and invite", text: "Generate a task for your role, review the materials and scoring, then invite a candidate." },
   { name: "Complete the task", text: "The candidate works with relevant materials and an AI assistant in the assessment workspace." },
   { name: "Review the evidence", text: "Inspect the submitted work, draft evaluation, and selected moments from the session." },
   { name: "Make your assessment", text: "Review the draft, adjust it where needed, and decide your next interview step." },
@@ -97,7 +98,7 @@ export default function Home() {
             <h1 id="hero-title" className="hero__title">
               See how candidates work with AI.
             </h1>
-            <p className="hero__sub">Hands-on assessments for product managers, business analysts, sales professionals, and QA/SDET candidates.</p>
+            <p className="hero__sub">Hands-on candidate assessments, built around the role you’re hiring for.</p>
             <p className="hero__lede">
               Assess how candidates frame problems, direct AI, check information, apply domain judgment, and deliver useful results.
             </p>
@@ -202,41 +203,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Tasks by profession */}
-        <section className="section" id="tasks" aria-labelledby="tasks-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="tasks-title">Built around the role.</h2>
-              <p>
-                Work that calls for professional judgment. Explore the four roles currently covered by Proofwork.
-              </p>
-            </header>
-            <div className="roles-grid">
-              {roles.map((r) => (
-                <article key={r.role} className="role" data-reveal>
-                  <h3 className="role__name">{r.role}</h3>
-                  <ul className="role__tasks">
-                    {r.tasks.map((t) => (
-                      <li key={t.name}>
-                        <p className="role__task">{t.name}</p>
-                        {t.text && <p className="role__text">{t.text}</p>}
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="role__meta">
-                    <Clock /> {r.role === "Product manager" ? "45 minutes per task" : "Time allowance shown before starting"}
-                  </p>
-                </article>
-              ))}
-              <article className="role role--next" data-reveal>
-                <h3 className="role__name">In development</h3>
-                <p className="role__text">
-                  Assessments for your requirements. We’re building tools to help hiring teams create AI-assisted assessments around their own requirements, with automated checks during task preparation.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
+        <TaskGeneration />
 
         {/* Fair to candidates */}
         <section className="section section--fair" aria-labelledby="fair-title">
@@ -244,7 +211,7 @@ export default function Home() {
             <div className="fair__text" data-reveal>
               <h2 id="fair-title">Clear expectations before the task.</h2>
               <p>
-                Taking a Proofwork task? You should understand the workspace, the recording, and the evaluation before you agree to begin.
+                Taking an Evaliro task? You should understand the workspace, the recording, and the evaluation before you agree to begin.
               </p>
               <ul className="fair__list">
                 <li>
@@ -372,19 +339,19 @@ export default function Home() {
 
       <footer className="foot">
         <div className="wrap foot__in">
-          <a className="brand" href="/" aria-label="Proofwork home">
+          <a className="brand" href="/" aria-label="Evaliro home">
             <Logo />
-            <span>Proofwork</span>
+            <span>Evaliro</span>
           </a>
           <nav aria-label="Footer" className="foot__nav">
             <a href="#how">How it works</a>
-            <a href="#tasks">Tasks</a>
+            <a href="#tasks">Task generation</a>
             <a href="#faq">FAQ</a>
             <a href="#candidates">For candidates</a>
             <a href={LOGIN_URL}>Sign in</a>
             <a href={CONTACT_URL}>Contact</a>
           </nav>
-          <p className="foot__fine">© 2026 Proofwork. Example sessions on this page use invented data.</p>
+          <p className="foot__fine">© 2026 Evaliro. Example sessions on this page use invented data.</p>
         </div>
       </footer>
       <Reveals />

@@ -17,7 +17,7 @@ const steps = [
     body: "Some answers carry a deliberate error: a feature that isn’t live yet, a wrong denominator, a wrong date, an off-by-one. It reads as correct, and nothing tells the candidate which answers are planted.",
   },
   {
-    title: "Proofwork keeps both versions.",
+    title: "Evaliro keeps both versions.",
     body: "What the AI really said, and the planted version the candidate saw. The reviewer sees the line flagged in the replay. The candidate never does.",
   },
   {
@@ -26,7 +26,7 @@ const steps = [
   },
   {
     title: "Checked after submission.",
-    body: "Proofwork checks the submitted work against every planted error. The result is Caught or Missed, with the moment in the replay one click away.",
+    body: "Evaliro checks the submitted work against every planted error. The result is Caught or Missed, with the moment in the replay one click away.",
   },
 ];
 
@@ -94,7 +94,7 @@ export function Walkthrough() {
             {x.role}
           </button>
         ))}
-        <span className="roles__more">More professions on the way</span>
+        <span className="roles__more">Illustrative role examples</span>
       </div>
 
       <div className="wt" data-outcome={outcome}>

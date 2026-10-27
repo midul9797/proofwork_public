@@ -1,6 +1,10 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-export const alt = "Proofwork: see how candidates work with AI, not just what they ship.";
+const logoSrc = `data:image/png;base64,${await readFile(join(process.cwd(), "public/logo.png"), "base64")}`;
+
+export const alt = "Evaliro: see how candidates work with AI, not just what they ship.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,8 +25,9 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 32, fontWeight: 600 }}>
-          <div style={{ width: 40, height: 40, borderRadius: 10, background: "#2d5be3", display: "flex" }} />
-          Proofwork
+          {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain <img> only */}
+          <img src={logoSrc} width={62} height={48} alt="" />
+          Evaliro
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div style={{ fontSize: 68, fontWeight: 700, lineHeight: 1.05, letterSpacing: -2, maxWidth: 980 }}>
