@@ -43,7 +43,7 @@ export default function OpengraphImage() {
                 color: "#e0a04a",
               }}
             >
-              Planted error in AI answer
+              AI-assisted work
             </div>
             <div
               style={{
@@ -55,7 +55,7 @@ export default function OpengraphImage() {
                 fontWeight: 600,
               }}
             >
-              Caught
+              Human review
             </div>
           </div>
         </div>

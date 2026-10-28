@@ -65,8 +65,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Marks the document as script-enabled so reveal motion can start from a hidden state.
-// Without JS, or with reduced motion, every element stays visible.
+// Enables the CSS hero motion. Section entrances are enabled separately after hydration.
 const motionScript = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.motion='1'}catch(e){}`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

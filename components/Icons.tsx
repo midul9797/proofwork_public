@@ -1,5 +1,4 @@
 import Image from "next/image";
-import logo from "@/public/logo.png";
 import type { SVGProps } from "react";
 
 type P = SVGProps<SVGSVGElement>;
@@ -99,8 +98,8 @@ export const Mail = (p: P) => (
   </Svg>
 );
 
-const LOGO_RATIO = logo.width / logo.height;
+const LOGO_RATIO = 496 / 384;
 
 export function Logo({ size = 22 }: { size?: number }) {
-  return <Image src={logo} alt="" width={Math.round(size * LOGO_RATIO)} height={size} loading="eager" />;
+  return <Image src="/logo.png" alt="" width={Math.round(size * LOGO_RATIO)} height={size} loading="eager" unoptimized />;
 }

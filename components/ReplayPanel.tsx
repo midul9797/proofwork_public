@@ -1,5 +1,5 @@
 import { timelineTicks } from "@/lib/content";
-import { Check, FileIcon, Flag } from "./Icons";
+import { Check, FileIcon } from "./Icons";
 import { TiltOnScroll } from "./TiltOnScroll";
 
 const changes = [
@@ -11,7 +11,7 @@ const changes = [
 
 const legend = [
   { kind: "ai", label: "AI message" },
-  { kind: "flag", label: "Trap fired" },
+  { kind: "flag", label: "Source reviewed" },
   { kind: "pass", label: "Test run" },
   { kind: "paste", label: "Paste" },
   { kind: "away", label: "Left the window" },
@@ -75,25 +75,23 @@ export function ReplayPanel() {
             <div className="rp-chat">
               <div className="rp-chat__tabs">
                 <span className="is-on">AI chat (2)</span>
-                <span>Traps (1)</span>
+                <span>Session notes</span>
               </div>
               <div className="msg msg--me">Draft this month&rsquo;s customer release notes from the changelog.</div>
               <div className="msg msg--ai">
                 <p>
-                  New this month:{" "}
-                  <span className="msg__flag-inline">bulk invite is now live for every workspace.</span> Saved filters
-                  and dark mode are available too.
+                  I’ll draft the release notes from the changelog and use the style guide to keep the wording clear.
                 </p>
                 <div className="msg__chips">
                   <span className="chip chip--flag">
-                    <Flag /> Planted error
+                    <FileIcon /> Source material
                   </span>
                   <span className="chip chip--caught">
-                    <Check /> Caught
+                    <Check /> Reviewed
                   </span>
                 </div>
               </div>
-              <div className="msg msg--me">Bulk invite is still behind a flag in the changelog. Leaving it out.</div>
+              <div className="msg msg--me">Group the released changes by customer benefit. Keep the draft concise.</div>
             </div>
           </div>
 
@@ -127,7 +125,7 @@ export function ReplayPanel() {
         </div>
       </TiltOnScroll>
       <figcaption className="replay__cap">
-        Example session with invented data: a product manager task, paused at a planted error.
+        Illustrative session with fictional data: a product manager prepares customer release notes.
       </figcaption>
     </figure>
   );

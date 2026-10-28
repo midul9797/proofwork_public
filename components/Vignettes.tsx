@@ -20,8 +20,8 @@ export function TrapsVignette() {
       <ul className="traps">
         <li>
           <div>
-            <div className="traps__what">Unreleased feature described as live</div>
-            <div className="traps__where">Product manager · shown at 4m 05s</div>
+            <div className="traps__what">Checked an AI claim against the source</div>
+            <div className="traps__where">Product manager · illustrative example</div>
           </div>
           <span className="chip chip--caught">
             <Check /> Caught
@@ -29,8 +29,8 @@ export function TrapsVignette() {
         </li>
         <li>
           <div>
-            <div className="traps__what">Wrong renewal date in a customer email</div>
-            <div className="traps__where">Sales · shown at 5m 50s</div>
+            <div className="traps__what">Accepted an unsupported assumption</div>
+            <div className="traps__where">Business analyst · illustrative example</div>
           </div>
           <span className="chip chip--missed">
             <Flag /> Missed
@@ -38,8 +38,8 @@ export function TrapsVignette() {
         </li>
         <li>
           <div>
-            <div className="traps__what">Limit check lets request 101 through</div>
-            <div className="traps__where">QA / SDET · shown at 6m 40s</div>
+            <div className="traps__what">Validated a suggested change with tests</div>
+            <div className="traps__where">Coding task · illustrative example</div>
           </div>
           <span className="chip chip--caught">
             <Check /> Caught
@@ -134,12 +134,12 @@ export function EvaluationVignette() {
         <li className="eval__more">+ 2 more competencies</li>
       </ul>
       <blockquote className="evidence">
-        <p>&ldquo;Bulk invite is still behind a flag in the changelog. Leaving it out.&rdquo;</p>
+        <p>&ldquo;I compared the changelog with the style guide before drafting the customer release notes.&rdquo;</p>
         <footer>
           <Check /> Quote found in the session · AI chat, 8m 20s
         </footer>
       </blockquote>
-      <p className="vig__note vig__note--dropped">1 quote dropped: not found in the session.</p>
+      <p className="vig__note">The reviewer can inspect the evidence and adjust the ratings.</p>
     </Frame>
   );
 }
@@ -164,7 +164,7 @@ export function BaselineVignette() {
         </div>
       </div>
       <p className="base__out">This candidate: 81 · 19 above the AI alone.</p>
-      <p className="vig__note">The AI given only the task, with no person, averaged over 3 runs.</p>
+      <p className="vig__note">Illustrative scores. The reference depends on the model and task conditions.</p>
     </Frame>
   );
 }

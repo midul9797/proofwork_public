@@ -9,7 +9,7 @@ export const APP_URL = (process.env.NEXT_PUBLIC_APP_URL ?? "https://proofwork-pu
 export const LOGIN_URL = `${APP_URL}/login`;
 
 export const SITE_NAME = "Evaliro";
-export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "moklasurrahman9797@gmail.com";
+export const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "moklasur@evaliro.com";
 export const DEMO_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("An Evaliro demo")}&body=${encodeURIComponent("Hi Moklasur,\n\nI’d like to see Evaliro in action.\n\nMy team:\nThe role we’re hiring for:\n\nThanks!")}`;
 export const CONTACT_URL = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("A question about Evaliro")}`;
 

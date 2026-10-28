@@ -1,4 +1,4 @@
-import { ArrowRight, Chat, Check, Clock, Eye, Flag, Logo } from "@/components/Icons";
+import { ArrowRight, Chat, Check, Logo } from "@/components/Icons";
 import { Nav } from "@/components/Nav";
 import { ReplayPanel } from "@/components/ReplayPanel";
 import { Reveals } from "@/components/Reveals";
@@ -6,21 +6,12 @@ import { StartFree } from "@/components/StartFree";
 import {
   BaselineVignette,
   EvaluationVignette,
-  ExplainBackVignette,
   KeyMomentsVignette,
-  ReplayVignette,
-  TrapsVignette,
 } from "@/components/Vignettes";
 import { TaskGeneration } from "@/components/TaskGeneration";
 import { Walkthrough } from "@/components/Walkthrough";
 import { faqs } from "@/lib/content";
-import { CONTACT_URL, LOGIN_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
-
-const problems = [
-  { claim: "Interpret the brief.", detail: "How did they understand the requirements and structure an approach?" },
-  { claim: "Check important claims.", detail: "What did they verify before relying on the AI’s answer?" },
-  { claim: "Make the trade-offs.", detail: "Which constraints and professional decisions shaped the result?" },
-];
+import { CONTACT_URL, DEMO_URL, LOGIN_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const how = [
   { name: "Create and invite", text: "Generate a task for your role, review the materials and scoring, then invite a candidate." },
@@ -30,11 +21,8 @@ const how = [
 ];
 
 const features = [
-  { id: "moments", title: "A session, with context.", body: "Replay the work and jump to selected moments, including AI exchanges, edits, and submission. The evaluation gives you a place to start; the session lets you inspect it.", Vignette: KeyMomentsVignette },
-  { id: "replay", title: "Follow the evidence.", body: "Move from an evaluation to the work behind it. Keep observed actions separate from interpretations, and inspect the session in context.", Vignette: ReplayVignette },
-  { id: "traps", title: "Check what matters.", body: "Verification is one of five evaluation dimensions. Review how candidates check important claims against source materials, data, or tests; one missed mistake is not a verdict on overall competence.", Vignette: TrapsVignette },
-  { id: "explain", title: "Continue the conversation.", body: "Optional explain-back questions help explore the candidate’s understanding and prepare a more specific follow-up interview.", Vignette: ExplainBackVignette },
-  { id: "baseline", title: "An AI-only reference.", body: "An AI-only reference run offers another view of the task under stated conditions. Comparisons depend on the model, tools, time allowance, and evaluation setup.", Vignette: BaselineVignette },
+  { id: "baseline", title: "An AI-only reference.", body: "See how AI performs on the same task without a candidate directing it. Use that reference alongside the candidate’s work and decisions, with the model and task conditions in mind.", Vignette: BaselineVignette },
+  { id: "moments", title: "A session, with context.", body: "Jump from the evaluation to the candidate’s AI exchanges, edits, and submitted work. Use the session to prepare a more specific follow-up conversation.", Vignette: KeyMomentsVignette },
 ];
 
 const dimensions = [
@@ -112,42 +100,42 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Signature: walkthrough */}
+        {/* How it works */}
+        <section className="section section--how" id="how" aria-labelledby="how-title">
+          <div className="wrap">
+            <header className="head" data-reveal>
+              <h2 id="how-title">From invitation to insight.</h2>
+              <p>A task for the candidate. A reviewable body of work for you.</p>
+            </header>
+            <ol className="how" data-reveal>
+              {how.map(({ name, text }, i) => (
+                <li key={name} className={`how__step how__step--${i}`}>
+                  <span className="how__tick" aria-hidden="true" />
+                  <h3>{name}</h3>
+                  <p>{text}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Sample evaluation */}
         <section className="section section--walk" id="sample-evaluation" aria-labelledby="walk-title">
           <div className="wrap">
             <header className="head" data-reveal>
-              <h2 id="walk-title">From a work task to evidence you can review.</h2>
+              <h2 id="walk-title">Evidence you can review.</h2>
               <p>
-                Follow an example assessment from the task brief to the submitted work. Inspect the candidate’s decisions and the evidence behind each part of the evaluation.
+                A draft evaluation connects the candidate’s work with the decisions behind it.
               </p>
             </header>
             <article className="feature" data-reveal>
               <div className="feature__text">
                 <h3>A draft to support your judgment.</h3>
                 <p>Review the reasoning, inspect the evidence, and change any rating before making your own assessment.</p>
-                <p>Illustrative assessment with fictional data.</p>
+                <p><a href={DEMO_URL}>Explore the full review in a demo.</a></p>
               </div>
               <EvaluationVignette />
             </article>
-            <Walkthrough />
-          </div>
-        </section>
-
-        {/* Problem */}
-        <section className="section" aria-labelledby="problem-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="problem-title">The result is only part of the story.</h2>
-              <p>A finished assignment shows what a candidate delivered. When AI is part of the work, you also need to understand the decisions behind it.</p>
-            </header>
-            <ul className="problems">
-              {problems.map((p) => (
-                <li key={p.claim} data-reveal>
-                  <p className="problems__claim">{p.claim}</p>
-                  <p className="problems__detail">{p.detail}</p>
-                </li>
-              ))}
-            </ul>
           </div>
         </section>
 
@@ -169,11 +157,22 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Planted-error walkthrough */}
+        <section className="section section--walk" id="traps" aria-labelledby="traps-title">
+          <div className="wrap">
+            <header className="head" data-reveal>
+              <h2 id="traps-title">Can they spot the mistake?</h2>
+              <p>Follow an illustrative session as the candidate asks, checks, and submits. Switch roles or compare caught and missed outcomes as you scroll.</p>
+            </header>
+            <Walkthrough />
+          </div>
+        </section>
+
         {/* Features */}
         <section className="section section--features" aria-label="Follow the evidence" id="evidence">
           <div className="wrap">
             {features.map(({ id, title, body, Vignette }, i) => (
-              <article key={id} id={id} className={`feature${i % 2 ? " feature--flip" : ""}`} data-reveal>
+              <article key={id} id={id} className={`feature${i % 2 === 0 ? " feature--flip" : ""}`} data-reveal>
                 <div className="feature__text">
                   <h2>{title}</h2>
                   <p>{body}</p>
@@ -184,115 +183,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* How it works */}
-        <section className="section section--how" id="how" aria-labelledby="how-title">
-          <div className="wrap">
-            <header className="head" data-reveal>
-              <h2 id="how-title">From invitation to insight.</h2>
-              <p>A task for the candidate. A reviewable body of work for you.</p>
-            </header>
-            <ol className="how" data-reveal>
-              {how.map(({ name, text }, i) => (
-                <li key={name} className={`how__step how__step--${i}`}>
-                  <span className="how__tick" aria-hidden="true" />
-                  <h3>{name}</h3>
-                  <p>{text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
         <TaskGeneration />
-
-        {/* Fair to candidates */}
-        <section className="section section--fair" aria-labelledby="fair-title">
-          <div className="wrap fair">
-            <div className="fair__text" data-reveal>
-              <h2 id="fair-title">Clear expectations before the task.</h2>
-              <p>
-                Taking an Evaliro task? You should understand the workspace, the recording, and the evaluation before you agree to begin.
-              </p>
-              <ul className="fair__list">
-                <li>
-                  <Clock />
-                  <span>
-                    <strong>A calm, timed workspace.</strong> The time limit is shown before they start and stays in
-                    view.
-                  </span>
-                </li>
-                <li>
-                  <Chat />
-                  <span>
-                    <strong>AI openly allowed.</strong> Using it well is part of the skill. Sending more messages is
-                    never rewarded.
-                  </span>
-                </li>
-                <li>
-                  <Eye />
-                  <span>
-                    <strong>Consent first.</strong> Candidates agree to recording before the task begins.
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <figure className="vig consent" data-reveal>
-              <div className="vig__panel" aria-hidden="true">
-                <div className="vig__bar">Before you start</div>
-                <div className="vig__body">
-                  <p className="consent__h">This session is recorded</p>
-                  <p className="consent__p">
-                    Your typing, pastes, test runs, AI chat and time away from this window are recorded so the
-                    reviewer can replay how you worked. The AI assistant is allowed.
-                  </p>
-                  <div className="consent__row">
-                    <span className="consent__time">
-                      <Clock /> 45 min, shown before you start
-                    </span>
-                    <span className="eval__btn eval__btn--primary">I agree, start the task</span>
-                  </div>
-                </div>
-              </div>
-              <figcaption className="vig__cap">Example screen</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        {/* For candidates */}
-        <section className="section section--cand" id="candidates" aria-labelledby="cand-title">
-          <div className="wrap cand">
-            <header className="cand__head" data-reveal>
-              <h2 id="cand-title">Know what to expect.</h2>
-              <p>
-                AI is part of the task. How you direct, check, and apply its work matters. The evaluation remains a draft for a person to review.
-              </p>
-            </header>
-            <ol className="cand__rules" data-reveal>
-              <li>
-                <h3>Use the AI the way you would at work.</h3>
-                <p>The assistant in the workspace is allowed. Using it well is part of what the task looks at.</p>
-              </li>
-              <li>
-                <h3>It is sometimes wrong on purpose.</h3>
-                <p>
-                  Some answers contain a deliberate mistake. Check what it gives you against the materials, the data
-                  or the tests before you rely on it, just as you would with any colleague&rsquo;s work.
-                </p>
-              </li>
-              <li>
-                <h3>Your session is recorded, with your consent.</h3>
-                <p>
-                  Typing, pastes, test runs, the AI chat and time away from the window. You agree to this before the
-                  task starts, and the time limit is shown up front.
-                </p>
-              </li>
-              <li>
-                <h3>More AI messages won&rsquo;t raise your score.</h3>
-                <p>How often you ask is context only. What counts is how you check, decide and explain your work.</p>
-              </li>
-            </ol>
-          </div>
-        </section>
 
         {/* FAQ */}
         <section className="section" id="faq" aria-labelledby="faq-title">
@@ -325,11 +216,11 @@ export default function Home() {
             </h2>
             <div className="final__mini" aria-hidden="true">
               <span className="chip chip--flag">
-                <Flag /> Planted error
+                <Chat /> AI allowed
               </span>
               <span className="final__arrow" />
               <span className="chip chip--caught">
-                <Check /> Caught
+                <Check /> Human review
               </span>
             </div>
             <StartFree />
@@ -347,7 +238,8 @@ export default function Home() {
             <a href="#how">How it works</a>
             <a href="#tasks">Task generation</a>
             <a href="#faq">FAQ</a>
-            <a href="#candidates">For candidates</a>
+            <a href="#traps">Planted errors</a>
+            <a href="#baseline">AI-only reference</a>
             <a href={LOGIN_URL}>Sign in</a>
             <a href={CONTACT_URL}>Contact</a>
           </nav>

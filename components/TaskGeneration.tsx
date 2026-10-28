@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Check, Flag } from "./Icons";
+import { Check } from "./Icons";
 import styles from "./TaskGeneration.module.css";
 
 const steps = [
   { title: "Describe your role", text: "Set the responsibilities, seniority, and skills you want to see. Choose a document or coding task." },
-  { title: "Choose an idea", text: "Start with three different proposals. Ask for more until you find the right fit, up to nine ideas." },
-  { title: "Review the materials", text: "Read the generated files and answer key. Coding projects must pass checks in a real sandbox." },
-  { title: "Choose the planted errors", text: "Review deliberately wrong AI answers and select the ones that test careful verification." },
-  { title: "Make the scoring yours", text: "Edit the criteria, weights, and descriptions of strong and weak answers before creating the task." },
-  { title: "Invite with confidence", text: "Keep the finished task private to your workspace. Compare candidate work with an AI-only benchmark." },
+  { title: "Choose an idea", text: "Explore suggested scenarios and choose the one that fits your team’s work." },
+  { title: "Review the materials", text: "Read the generated brief and files before they reach a candidate." },
+  { title: "Review the checks", text: "Review the verification points that help you understand how candidates check their work." },
+  { title: "Make the scoring yours", text: "Set evaluation criteria around the skills and outcomes that matter for your role." },
+  { title: "Invite with confidence", text: "Keep the finished task private to your workspace and invite candidates when you’re ready." },
 ];
 
 const examples = {
@@ -22,11 +22,8 @@ const examples = {
     brief: "Response times have risen while ticket volume has stayed steady. Find what changed and recommend where the team should act first.",
     ideas: ["Investigate a support backlog", "Plan a team handover", "Review an escalation policy"],
     files: ["Ticket history.csv", "Team handover.md", "Service targets.md"],
-    check: "Answer-key figures checked against the data",
-    error: "“Ticket volume increased, so the team needs more people.”",
-    correction: "The volume stayed steady. Check the ticket history before accepting the explanation.",
+    check: "Review the materials before creating your task",
     criteria: ["Finding the cause", "Evidence and verification", "Practical recommendation"],
-    weights: [40, 35, 25],
   },
   coding: {
     title: "Repair a booking conflict",
@@ -36,11 +33,8 @@ const examples = {
     brief: "Some overlapping reservations are being accepted. Investigate the booking service, fix the behavior, and add a regression test.",
     ideas: ["Repair a booking conflict", "Trace a stale cache", "Reconcile a billing total"],
     files: ["bookings.py", "test_bookings.py", "README.md"],
-    check: "Starting code and reference solution checked in a sandbox",
-    error: "“Reservations that touch at a boundary must always conflict.”",
-    correction: "Check the booking rules and test cases before relying on the suggested condition.",
+    check: "Review the materials before creating your task",
     criteria: ["Correctness of the fix", "Test coverage", "Reasoning and verification"],
-    weights: [45, 30, 25],
   },
 };
 
@@ -141,22 +135,20 @@ export function TaskGeneration() {
                         <p className={styles.check}><Check />{example.check}</p>
                       </>}
                       {index === 3 && <>
-                        <p className={styles.label}>A proposed AI mistake</p>
-                        <blockquote className={styles.error}>{example.error}</blockquote>
-                        <p className={styles.brief}>{example.correction}</p>
-                        <p className={styles.check}><Flag />You review and select the planted errors.</p>
+                        <h3 className={styles.title}>Make verification visible.</h3>
+                        <p className={styles.brief}>Review the checks that help you see how candidates question, validate, and apply information.</p>
+                        <div className={styles.field}><strong>Your team stays in control.</strong><span>Review the task setup before inviting anyone.</span></div>
                       </>}
                       {index === 4 && <>
                         <h3 className={styles.title}>Define a strong answer.</h3>
-                        <div className={styles.scoring}><dl>{example.criteria.map((criterion, i) => <div key={criterion}><dt>{criterion}</dt><dd>{example.weights[i]}%</dd></div>)}</dl></div>
-                        <p className={styles.check}><Check />Total weight: 100%</p>
-                        <p className={styles.hint}>Edit criteria, weights, and descriptions before creating the task.</p>
+                        <div className={styles.scoring}><ul>{example.criteria.map((criterion) => <li key={criterion} className={styles.check}><Check />{criterion}</li>)}</ul></div>
+                        <p className={styles.hint}>Review the full scoring setup in a requested demo.</p>
                       </>}
                       {index === 5 && <>
                         <p className={styles.ready}><Check />Ready for candidate invitations</p>
                         <h3 className={styles.title}>{example.title}</h3>
                         <p className={styles.brief}>Private to your workspace. Your team can now use this task in a candidate invitation.</p>
-                        <div className={styles.field}><strong>How far can AI get on its own?</strong><span>Two AI-only runs create a reference score for candidate reports.</span></div>
+                        <div className={styles.field}><strong>Ready when you are.</strong><span>Use your workspace’s invitation flow to send the task to a candidate.</span></div>
                       </>}
                     </div>
                   ))}
